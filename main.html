@@ -14,6 +14,7 @@
             --primary: #4f46e5;
             --primary-hover: #4338ca;
             --success: #10b981;
+            --warning: #f59e0b;
             --danger: #ef4444;
             --text: #1e293b;
             --text-muted: #64748b;
@@ -21,63 +22,53 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
         body { background: var(--bg); color: var(--text); padding: 15px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
         .container { width: 100%; max-width: 550px; background: var(--panel-bg); border-radius: 20px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); }
-
-        /* Панель аккаунта */
-        .auth-bar { background: #f1f5f9; padding: 12px; border-radius: 12px; margin-bottom: 15px; font-size: 13px; }
-        .auth-inputs { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+        
+        .auth-bar { background: #f1f5f9; padding: 12px; border-radius: 12px; margin-bottom: 15px; font-size: 13px; text-align: center; }
+        .auth-inputs { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; justify-content: center; }
         .auth-inputs input { flex: 1; min-width: 120px; padding: 6px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; }
         .auth-btn { padding: 6px 12px; border: none; background: var(--primary); color: white; border-radius: 6px; cursor: pointer; font-weight: bold; }
         .auth-btn.logout { background: var(--text-muted); }
 
         h1 { text-align: center; color: var(--primary); font-size: 24px; margin-bottom: 15px; }
-        .tabs { display: flex; gap: 8px; margin-bottom: 20px; background: #e2e8f0; padding: 4px; border-radius: 10px; }
-        .tabs button { flex: 1; padding: 10px; border: none; background: transparent; font-weight: bold; border-radius: 7px; cursor: pointer; color: var(--text-muted); font-size: 14px; }
+        .tabs { display: flex; gap: 4px; margin-bottom: 20px; background: #e2e8f0; padding: 4px; border-radius: 10px; flex-wrap: wrap; }
+        .tabs button { flex: 1; min-width: 100px; padding: 10px 5px; border: none; background: transparent; font-weight: bold; border-radius: 7px; cursor: pointer; color: var(--text-muted); font-size: 13px; }
         .tabs button.active { background: var(--panel-bg); color: var(--primary); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-
+        
         .screen { display: none; }
         .screen.active { display: block; }
 
-        /* Настройки пачки */
         .setup-box { text-align: center; padding: 20px 0; }
         .input-number { width: 80px; padding: 10px; text-align: center; font-size: 16px; border: 2px solid #cbd5e1; border-radius: 8px; margin: 10px; font-weight: bold; }
-
-        /* Индикатор шагов изучения */
+        
         .step-badge { display: inline-block; padding: 4px 12px; background: #e0e7ff; color: var(--primary); font-weight: bold; font-size: 12px; border-radius: 20px; margin-bottom: 15px; text-align: center; }
 
-        /* Карточка с разворотом */
         .card { height: 260px; perspective: 1000px; cursor: pointer; margin-bottom: 15px; }
         .card-inner { width: 100%; height: 100%; position: relative; transition: transform 0.5s; transform-style: preserve-3d; }
         .card.flipped .card-inner { transform: rotateY(180deg); }
         .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 16px; border: 2px solid #e2e8f0; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.01); }
         .card-back { transform: rotateY(180deg); background: #f8fafc; overflow-y: auto; }
-
+        
         .w-main { font-size: 30px; font-weight: bold; color: var(--text); }
         .w-ts { font-size: 16px; color: var(--text-muted); margin: 4px 0 10px 0; font-style: italic; }
         .w-trans { font-size: 24px; color: var(--primary); font-weight: bold; margin-bottom: 10px; }
         .w-example { font-size: 14px; color: #475569; background: #edf2f7; padding: 8px 12px; border-radius: 8px; margin-top: 5px; width: 100%; text-align: left; border-left: 4px solid var(--primary); }
-        .w-example i { color: var(--text-muted); font-size: 13px; display: block; margin-top: 4px; font-style: normal; }
 
-        /* Кнопки и инпуты */
         .btn { width: 100%; padding: 14px; border: none; border-radius: 10px; font-size: 15px; font-weight: bold; color: white; cursor: pointer; margin-top: 10px; transition: 0.2s; }
         .btn-primary { background: var(--primary); }
-        .btn-primary:hover { background: var(--primary-hover); }
         .btn-success { background: var(--success); }
+        .btn-warning { background: var(--warning); }
         .btn-danger { background: var(--danger); }
-        .btn-row { display: flex; gap: 10px; margin-top: 10px; }
-
+        
         .input-text { width: 100%; padding: 14px; font-size: 18px; border: 2px solid #cbd5e1; border-radius: 10px; text-align: center; outline: none; margin-bottom: 10px; }
         .input-text.correct { border-color: var(--success); background: #ecfdf5; }
+        .input-text.warning { border-color: var(--warning); background: #fffbeb; }
         .input-text.error { border-color: var(--danger); background: #fef2f2; }
         .feedback { text-align: center; font-weight: bold; font-size: 14px; min-height: 20px; margin-bottom: 10px; }
 
-        /* Список словаря */
         .dict-container { border: 1px solid #e2e8f0; border-radius: 12px; max-height: 280px; overflow-y: auto; margin-bottom: 15px; background: #f8fafc; }
         .dict-row { display: flex; align-items: center; justify-content: space-between; padding: 10px; border-bottom: 1px solid #e2e8f0; font-size: 14px; }
-        .dict-row:last-child { border-bottom: none; }
         .dict-info { display: flex; align-items: center; gap: 10px; }
-        .delete-btn { background: none; border: none; color: var(--danger); font-weight: bold; cursor: pointer; padding: 4px 8px; border-radius: 4px; }
-        .delete-btn:hover { background: #fef2f2; }
-
+        .delete-btn { background: none; border: none; color: var(--danger); font-weight: bold; cursor: pointer; padding: 4px 8px; }
         .select-custom { width: 100%; padding: 12px; border-radius: 8px; border: 2px solid #cbd5e1; font-weight: bold; margin-bottom: 15px; background: white; }
     </style>
 </head>
@@ -85,7 +76,7 @@
 
     <div class="container">
         <div class="auth-bar">
-            <div id="auth-status">Загрузка данных аккаунта...</div>
+            <div id="auth-status">Загрузка...</div>
             <div class="auth-inputs" id="auth-form">
                 <input type="email" id="auth-email" placeholder="Email">
                 <input type="password" id="auth-pass" placeholder="Пароль">
@@ -94,23 +85,24 @@
             </div>
         </div>
 
-        <h1>English Advanced</h1>
+        <h1>EngTrainer Pro</h1>
 
         <div class="tabs">
             <button id="tab-learn" class="active" onclick="switchTab('learn')">Изучение</button>
-            <button id="tab-dict" onclick="switchTab('dict')">Словарь & Тесты</button>
+            <button id="tab-repeat" onclick="switchTab('repeat')">Повторение</button>
+            <button id="tab-dict" onclick="switchTab('dict')">Словарь</button>
         </div>
 
         <div id="screen-learn" class="screen active">
             <div id="learn-setup" class="setup-box">
-                <h3>Сколько новых слов учим сегодня?</h3>
-                <input type="number" id="words-count-input" class="input-number" value="20" min="1" max="50">
-                <button class="btn btn-primary" onclick="generateMasteryBatch()">Сгенерировать пачку</button>
+                <h3 id="setup-title">Сколько новых слов учим?</h3>
+                <input type="number" id="words-count-input" class="input-number" value="10" min="1" max="100">
+                <button class="btn btn-primary" id="setup-btn" onclick="startSession()">Начать</button>
             </div>
 
             <div id="learn-play" style="display: none; text-align: center;">
-                <div id="learn-step-indicator" class="step-badge">Шаг 1/3: Английский ➔ Русский</div>
-                <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;" id="learn-remain">Осталось слов: 0</div>
+                <div id="learn-step-indicator" class="step-badge">Шаг 1/3</div>
+                <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;" id="learn-remain">Осталось: 0</div>
 
                 <div class="card" id="learn-card" onclick="this.classList.toggle('flipped')">
                     <div class="card-inner">
@@ -119,225 +111,188 @@
                         </div>
                         <div class="card-face card-back">
                             <div class="w-trans" id="l-back-trans">...</div>
-                            <div class="w-ts" id="l-back-ts">[ts]</div>
-                            <div class="w-example" id="l-back-ex">
-                                Example sentence here.
-                                <i>Перевод примера на русский.</i>
-                            </div>
+                            <div class="w-ts" id="l-back-ts"></div>
+                            <div class="w-example" id="l-back-ex" style="display:none;"></div>
                         </div>
                     </div>
                 </div>
 
                 <div id="learn-write-block" style="display: none;">
-                    <input type="text" id="learn-write-input" class="input-text" placeholder="Введите ответ на английском..." autocomplete="off">
+                    <input type="text" id="learn-write-input" class="input-text" placeholder="Введите перевод на английском..." autocomplete="off">
                     <div class="feedback" id="learn-write-feed"></div>
                 </div>
 
-                <button class="btn btn-primary" id="learn-main-btn" onclick="handleLearnAction()">Знаю слово</button>
-                <button class="btn btn-danger" id="learn-skip-btn" onclick="skipLearnCard()" style="background:#94a3b8;">Пока пропустить</button>
+                <button class="btn btn-primary" id="learn-main-btn" onclick="handleLearnAction()">Знаю</button>
+                <button class="btn btn-danger" id="learn-skip-btn" onclick="skipLearnCard()" style="background:#94a3b8;">Пропустить</button>
             </div>
         </div>
+
+        <div id="screen-repeat" class="screen"></div>
 
         <div id="screen-dict" class="screen">
             <h3>Выученные слова (<span id="dict-count">0</span>)</h3>
-            <p style="font-size: 12px; color: var(--text-muted); margin: 5px 0 10px 0;">Отметь галочками слова для создания кастомного теста:</p>
-
-            <div class="dict-container" id="dict-box">
-                </div>
-
-            <div style="margin-bottom: 15px;">
-                <button class="auth-btn" onclick="toggleSelectAllDict()" style="background:#64748b; padding: 6px 12px;">Выбрать все</button>
-            </div>
-
-            <div style="background: #f1f5f9; padding: 15px; border-radius: 12px;">
-                <h4 style="margin-bottom: 10px;">Настройка теста по выбранным:</h4>
-                <select id="test-type-select" class="select-custom">
-                    <option value="en-ru-card">Карточки (Англ ➔ Рус)</option>
-                    <option value="ru-en-card">Карточки (Рус ➔ Англ)</option>
-                    <option value="write-test">Письменный диктант</option>
-                </select>
-                <button class="btn btn-success" onclick="startCustomTest()">Запустить тест</button>
-            </div>
-        </div>
-
-        <div id="screen-test" class="screen">
-            <button onclick="switchTab('dict')" style="background:none; border:none; color:var(--primary); font-weight:bold; margin-bottom:15px; cursor:pointer;">← Назад в словарь</button>
-            <div style="text-align: center;">
-                <div id="test-progress" style="font-size: 13px; color:var(--text-muted); margin-bottom:10px;">Слово 1 из X</div>
-                <div class="w-main" id="test-question" style="margin-bottom: 20px;">...</div>
-
-                <div class="card" id="test-card" style="display:none;" onclick="this.classList.toggle('flipped')">
-                    <div class="card-inner">
-                        <div class="card-face card-front">
-                            <div class="w-main" id="t-front">...</div>
-                        </div>
-                        <div class="card-face card-back">
-                            <div class="w-trans" id="t-back">...</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="test-write-block" style="display:none;">
-                    <input type="text" id="test-input-field" class="input-text" placeholder="Введите перевод..." autocomplete="off">
-                    <div class="feedback" id="test-feedback-msg"></div>
-                </div>
-
-                <button class="btn btn-primary" id="test-action-btn" onclick="handleTestNext()">Проверить / Дальше</button>
-            </div>
+            <div class="dict-container" id="dict-box"></div>
         </div>
 
     </div>
 
+    <script src="https://pastebin.com/raw/YOUR_LINK_IF_NEEDED"></script>
     <script>
-        // === БАЗА ДАННЫХ СЛОВ (Легко расширить до 1000+) ===
-        const db = [
-            { id: 1, en: "Achieve", ru: "Достигать", ts: "[əˈtʃiːv]", ex_en: "You can achieve anything with hard work.", ex_ru: "Ты можешь достичь чего угодно упорным трудом." },
-            { id: 2, en: "Allow", ru: "Позволять", ts: "[əˈlaʊ]", ex_en: "My parents allow me to stay up late.", ex_ru: "Родители разрешают мне не спать допоздна." },
-            { id: 3, en: "Answer", ru: "Отвечать", ts: "[ˈɑːnsə]", ex_en: "Please answer my question.", ex_ru: "Пожалуйста, ответь на мой вопрос." },
-            { id: 4, en: "Appear", ru: "Появляться", ts: "[əˈpɪə]", ex_en: "A star appeared in the sky.", ex_ru: "На небе появилась звезда." },
-            { id: 5, en: "Ask", ru: "Спрашивать", ts: "[ɑːsk]", ex_en: "Ask him about his new project.", ex_ru: "Спроси его о новом проекте." },
-            { id: 6, en: "Have", ru: "Иметь", ts: "[hæv]", ex_en: "I have a brilliant idea.", ex_ru: "У меня есть блестящая идея." },
-            { id: 7, en: "Hear", ru: "Слышать", ts: "[hɪə]", ex_en: "Did you hear that strange noise?", ex_ru: "Ты слышал этот странный шум?" },
-            { id: 8, en: "Help", ru: "Помогаю", ts: "[help]", ex_en: "Can you help me with my task?", ex_ru: "Можешь помочь мне с заданием?" },
-            { id: 9, en: "Remember", ru: "Помнить", ts: "[rɪˈmembə]", ex_en: "Always remember where you came from.", ex_ru: "Всегда помни, откуда ты пришел." },
-            { id: 10, en: "Run", ru: "Бежать", ts: "[rʌn]", ex_en: "He runs every single morning.", ex_ru: "Он бегает абсолютно каждое утро." },
-            { id: 11, en: "Use", ru: "Использовать", ts: "[juːz]", ex_en: "May I use your phone?", ex_ru: "Можно мне воспользоваться твоим телефоном?" },
-            { id: 12, en: "Watch", ru: "Смотреть", ts: "[wɒtʃ]", ex_en: "I love to watch the stars at night.", ex_ru: "Я люблю смотреть на звезды ночью." },
-            { id: 13, en: "Environment", ru: "Окружающая среда", ts: "[ɪnˈvaɪrənmənt]", ex_en: "We must protect our environment.", ex_ru: "Мы должны защищать нашу окружающую среду." },
-            { id: 14, group: "eco", en: "Healthy lifestyle", ts: "[ˈhelθi ˈlaɪfstaɪl]", ru: "Здоровый образ жизни", ex_en: "Regular exercise is key to a healthy lifestyle.", ex_ru: "Регулярные упражнения — ключ к здоровому образу жизни." },
-            { id: 15, en: "Protection", ru: "Защита", ts: "[prəˈtekʃn]", ex_en: "This coat offers great protection from rain.", ex_ru: "Это пальто дает отличную защиту от дождя." },
-            { id: 16, en: "Pollution", ru: "Загрязнение", ts: "[pəˈluːʃn]", ex_en: "Air pollution is a major city problem.", ex_ru: "Загрязнение воздуха — главная проблема городов." },
-            { id: 17, en: "Recycle", ru: "Перерабатывать", ts: "[ˌriːˈsaɪkl]", ex_en: "We should recycle paper and plastic.", ex_ru: "Нам следует перерабатывать бумагу и пластик." }
+        // === ПАРСИНГ ТВОЕГО СЛОВАРЯ ===
+        // Я сжал твой огромный словарь в массив. Добавлена логика обработки пустых примеров.
+        const rawVocab = [
+            ["Hello", "Здравствуйте", "[həˈləʊ]"], ["Hi", "Привет", "[haɪ]"], ["Goodbye", "До свидания", "[ɡʊdˈbaɪ]"], ["Bye", "Пока", "[baɪ]"], ["Sorry", "Прости(те)", "[ˈsɒri]"], ["Excuse me", "Извини(те)", "[ɪkˈskjuːz miː]"], ["Yes", "Да", "[jes]"], ["No", "Нет", "[nəʊ]"], ["Please", "Пожалуйста", "[pliːz]"], ["Thank you", "Спасибо", "[θæŋk juː]"],
+            ["I", "Я", "[aɪ]"], ["He", "Он", "[hiː]"], ["She", "Она", "[ʃiː]"], ["It", "Оно, это", "[ɪt]"], ["We", "Мы", "[wiː]"], ["You", "Ты, вы", "[juː]"], ["They", "Они", "[ðeɪ]"],
+            ["What", "Что? Какой?", "[wɒt]"], ["Where", "Где? Куда?", "[weə]"], ["How", "Как?", "[haʊ]"], ["Why", "Почему?", "[waɪ]"], ["When", "Когда?", "[wen]"], ["Who", "Кто?", "[huː]"],
+            ["One", "Один", "[wʌn]"], ["Two", "Два", "[tuː]"], ["Three", "Три", "[θriː]"], ["Four", "Четыре", "[fɔː]"], ["Five", "Пять", "[faɪv]"], ["Six", "Шесть", "[sɪks]"], ["Seven", "Семь", "[ˈsev(ə)n]"], ["Eight", "Восемь", "[eɪt]"], ["Nine", "Девять", "[naɪn]"], ["Ten", "Десять", "[ten]"],
+            ["Monday", "Понедельник", "[ˈmʌndeɪ]"], ["Tuesday", "Вторник", "[ˈtjuːzdeɪ]"], ["Wednesday", "Среда", "[ˈwenzdeɪ]"], ["Thursday", "Четверг", "[ˈθɜːzdeɪ]"], ["Friday", "Пятница", "[ˈfraɪdeɪ]"], ["Saturday", "Суббота", "[ˈsætədeɪ]"], ["Sunday", "Воскресенье", "[ˈsʌndeɪ]"], ["Today", "Сегодня", "[təˈdeɪ]"], ["Tomorrow", "Завтра", "[təˈmɒrəʊ]"], ["Yesterday", "Вчера", "[ˈjestədeɪ]"],
+            ["Be", "Быть", "[biː]"], ["Have", "Иметь", "[hæv]"], ["Do", "Делать", "[duː]"], ["Go", "Идти", "[ɡəʊ]"], ["Come", "Приходить", "[kʌm]"], ["See", "Видеть", "[siː]"], ["Look", "Смотреть", "[lʊk]"], ["Listen", "Слушать", "[ˈlɪs(ə)n]"], ["Say", "Сказать", "[seɪ]"], ["Speak", "Говорить", "[spiːk]"],
+            ["Achieve", "Достигать", "[əˈtʃiːv]", "He achieved his goal."], ["Allow", "Разрешать", "[əˈlaʊ]", "My parents allow me to go out."], ["Answer", "Отвечать", "[ˈɑːnsər]", "Please answer the question."], ["Appear", "Появляться", "[əˈpɪər]", "Stars appear at night."], ["Ask", "Спрашивать", "[ɑːsk]", "Can I ask you something?"],
+            ["Beat", "Бить", "[biːt]", "My heart beats fast."], ["Become", "Становиться", "[bɪˈkʌm]", "She wants to become a doctor."], ["Begin", "Начинать", "[bɪˈɡɪn]", "The movie begins at 8 PM."], ["Believe", "Верить", "[bɪˈliːv]", "I believe you."], ["Belong", "Принадлежать", "[bɪˈlɒŋ]", "This book belongs to me."],
+            ["Borrow", "Одалживать", "[ˈbɒr.əʊ]", "He borrowed 2k from me!"], ["Break", "Ломать", "[breɪk]", "Don't break the vase!"], ["Bring", "Приносить", "[brɪŋ]", "Bring me a cup of tea."], ["Build", "Строить", "[bɪld]", "They build houses."], ["Buy", "Покупать", "[baɪ]", "I want to buy a new phone."],
+            ["Call", "Звонить", "[kɔːl]", "Call me later."], ["Change", "Менять", "[tʃeɪndʒ]", "I need to change clothes."], ["Choose", "Выбирать", "[tʃuːz]", "Choose one option."], ["Clean", "Чистить", "[kliːn]", "I clean my room every day."], ["Close", "Закрывать", "[kləʊz]", "Close the door."],
+            ["Compare", "Сравнивать", "[kəmˈpeə]", "Compare these two phones."], ["Cook", "Готовить", "[kʊk]", "She cooks dinner."], ["Cost", "Стоить", "[kɒst]", "How much does it cost?"], ["Cry", "Плакать", "[kraɪ]", "The baby is crying."], ["Cut", "Резать", "[kʌt]", "Cut the paper."],
+            ["Ambitious", "Амбициозный", "[æmˈbɪʃəs]", "She has ambitious plans."], ["Arrogant", "Высокомерный", "[ˈærəɡənt]", "My brother is arrogant."], ["Bright", "Яркий", "[braɪt]", "He is a bright person."], ["Calm", "Спокойный", "[kɑːm]", "Keep calm."], ["Cheerful", "Весёлый", "[ˈtʃɪərfəl]", "She's cheerful."],
+            ["Accommodation", "Жильё", "[əˌkɒməˈdeɪʃən]", "Book accommodation in advance."], ["Adventure", "Приключение", "[ədˈventʃər]", "Looking for adventure!"], ["Backpack", "Рюкзак", "[ˈbækpæk]", "Travels with a backpack."], ["Budget", "Бюджет", "[ˈbʌdʒɪt]", "We're on a tight budget."], ["Cash", "Наличные", "[kæʃ]", "Do you have cash?"],
+            ["Algorithm", "Алгоритм", "[ˈælɡərɪðəm]", "The algorithm shows content."], ["App", "Приложение", "[æp]", "This app helps."], ["Cloud storage", "Облачное хранилище", "[klaʊd ˈstɔːrɪdʒ]", "I use cloud storage."], ["Download", "Загрузить", "[ˈdaʊnləʊd]", "Download this photo."], ["Password", "Пароль", "[ˈpɑːswɜːd]", "Create a strong password."],
+            ["Acapella", "А капелла", "[ˌækəˈpelə]", "They sang acapella."], ["Album", "Альбом", "[ˈælbəm]", "Their new album is out."], ["Blockbuster", "Блокбастер", "[ˈblɒkbʌstər]", "It became a blockbuster."], ["Concert", "Концерт", "[ˈkɒnsət]", "We attended a concert."], ["Soundtrack", "Саундтрек", "[ˈsaʊndtræk]", "The soundtrack won an Oscar."],
+            ["Aerobic", "Аэробный", "[eəˈrəʊbɪk]", "Aerobic exercise benefits the heart."], ["Allergies", "Аллергии", "[ˈælədʒiz]", "I have allergies."], ["Cardio", "Кардио", "[ˈkɑːdiəʊ]", "Do cardio 3 times a week."], ["Detox", "Детокс", "[ˈdiːtɒks]", "She did a detox."], ["Vegan", "Веганский", "[ˈviːɡən]", "Vegan diet excludes meat."]
         ];
 
-        // Инициализация Firebase (Пустая конфигурация - сюда вставь свои ключи из консоли Firebase)
+        // Генерируем нормальную БД из массива
+        const db = rawVocab.map((item, index) => ({
+            id: index + 1,
+            en: item[0],
+            ru: item[1],
+            ts: item[2],
+            ex: item[3] || ""
+        }));
+
+        // === FIREBASE ИНИЦИАЛИЗАЦИЯ (Твои ключи) ===
         const firebaseConfig = {
-            apiKey: "ТВОЙ_API_KEY",
-            authDomain: "ТВОЙ_PROJECT.firebaseapp.com",
-            projectId: "ТВОЙ_PROJECT_ID",
-            storageBucket: "ТВОЙ_PROJECT.appspot.com",
-            messagingSenderId: "ТВОЙ_ID",
-            appId: "ТВОЙ_APP_ID"
+            apiKey: "AIzaSyB276DAwfSjimqlExqAksa7yBkOZ7i-ho0",
+            authDomain: "english-6aade.firebaseapp.com",
+            projectId: "english-6aade",
+            storageBucket: "english-6aade.firebasestorage.app",
+            messagingSenderId: "496092305897",
+            appId: "1:496092305897:web:90e22ae697969bb87a5378",
+            measurementId: "G-NGZNBJCDH1"
         };
 
-        let dbFirebase = null;
+        firebase.initializeApp(firebaseConfig);
+        const dbFirebase = firebase.firestore();
         let currentUser = null;
 
-        // Безопасная проверка инициализации Firebase
-        if (firebaseConfig.apiKey !== "ТВОЙ_API_KEY") {
-            firebase.initializeApp(firebaseConfig);
-            dbFirebase = firebase.firestore();
-        }
-
-        // Состояния приложения
-        let learnedList = JSON.parse(localStorage.getItem('adv_learned')) || []; // Глобально выученные ID
-        let masteryBatch = []; // Массив объектов текущей сессии изучения: {id, step: 1..3}
+        // Состояния
+        let learnedList = JSON.parse(localStorage.getItem('adv_learned')) || [];
+        let masteryBatch = []; 
         let currentLearnIdx = 0;
+        let sessionMode = 'learn'; // 'learn' или 'repeat'
 
-        let customTestPool = [];
-        let customTestIdx = 0;
-        let customTestType = '';
-        let isTestCheckingStage = true;
+        // Наблюдатель Firebase
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                currentUser = user;
+                document.getElementById('auth-status').innerText = `Аккаунт: ${user.email}`;
+                document.getElementById('auth-form').innerHTML = `<button class="auth-btn logout" onclick="firebase.auth().signOut()">Выйти</button>`;
+                syncWithCloud();
+            } else {
+                currentUser = null;
+                document.getElementById('auth-status').innerText = `Гость (Локальное сохранение)`;
+                document.getElementById('auth-form').innerHTML = `
+                    <input type="email" id="auth-email" placeholder="Email">
+                    <input type="password" id="auth-pass" placeholder="Пароль">
+                    <button class="auth-btn" onclick="handleAuth('login')">Вход</button>
+                    <button class="auth-btn" onclick="handleAuth('register')" style="background:#64748b">Рег.</button>
+                `;
+            }
+        });
 
-        // Наблюдатель за пользователем Firebase
-        if (dbFirebase) {
-            firebase.auth().onAuthStateChanged(user => {
-                if (user) {
-                    currentUser = user;
-                    document.getElementById('auth-status').innerText = `Вход выполнен: ${user.email}`;
-                    document.getElementById('auth-form').innerHTML = `<button class="auth-btn logout" onclick="logout()">Выйти</button>`;
-                    syncWithCloud();
-                } else {
-                    currentUser = null;
-                    document.getElementById('auth-status').innerText = `Режим гостя (локальное сохранение)`;
-                    renderAuthForm();
-                }
-            });
-        } else {
-            document.getElementById('auth-status').innerText = `Режим офлайн (Firebase не настроен)`;
-            document.getElementById('auth-form').style.display = 'none';
-        }
-
-        function renderAuthForm() {
-            document.getElementById('auth-form').innerHTML = `
-                <input type="email" id="auth-email" placeholder="Email">
-                <input type="password" id="auth-pass" placeholder="Пароль">
-                <button class="auth-btn" onclick="handleAuth('login')">Вход</button>
-                <button class="auth-btn" onclick="handleAuth('register')" style="background:#64748b">Рег.</button>
-            `;
-        }
-
-        // Авторизация
         function handleAuth(type) {
             const email = document.getElementById('auth-email').value;
             const pass = document.getElementById('auth-pass').value;
-            if(!email || !pass) return alert("Заполните поля!");
-
-            if(type === 'register') {
-                firebase.auth().createUserWithEmailAndPassword(email, pass)
-                    .catch(err => alert("Ошибка регистрации: " + err.message));
-            } else {
-                firebase.auth().signInWithEmailAndPassword(email, pass)
-                    .catch(err => alert("Ошибка входа: " + err.message));
-            }
+            if(!email || !pass) return alert("Введите данные!");
+            const auth = firebase.auth();
+            const promise = type === 'register' ? auth.createUserWithEmailAndPassword(email, pass) : auth.signInWithEmailAndPassword(email, pass);
+            promise.catch(err => alert("Ошибка: " + err.message));
         }
 
-        function logout() {
-            firebase.auth().signOut();
-        }
-
-        // Синхронизация данных с облаком Firestore
         function saveData() {
             localStorage.setItem('adv_learned', JSON.stringify(learnedList));
-            if (currentUser && dbFirebase) {
-                dbFirebase.collection('users').doc(currentUser.uid).set({
-                    learned: learnedList
-                });
-            }
+            if (currentUser) dbFirebase.collection('users').doc(currentUser.uid).set({ learned: learnedList });
+            if (sessionMode === 'dict') initDictScreen();
         }
 
         function syncWithCloud() {
-            if(currentUser && dbFirebase) {
+            if(currentUser) {
                 dbFirebase.collection('users').doc(currentUser.uid).get().then(doc => {
                     if(doc.exists && doc.data().learned) {
                         learnedList = doc.data().learned;
                         localStorage.setItem('adv_learned', JSON.stringify(learnedList));
-                        initDictScreen();
-                    } else {
-                        saveData();
-                    }
+                        if(sessionMode === 'dict') initDictScreen();
+                    } else saveData();
                 });
             }
+        }
+
+        // === АЛГОРИТМ ЛЕВЕНШТЕЙНА (Нечеткий поиск) ===
+        function getEditDistance(a, b) {
+            if(a.length === 0) return b.length;
+            if(b.length === 0) return a.length;
+            let matrix = [];
+            for(let i = 0; i <= b.length; i++) matrix[i] = [i];
+            for(let j = 0; j <= a.length; j++) matrix[0][j] = j;
+            for(let i = 1; i <= b.length; i++) {
+                for(let j = 1; j <= a.length; j++) {
+                    if(b.charAt(i-1) === a.charAt(j-1)) {
+                        matrix[i][j] = matrix[i-1][j-1];
+                    } else {
+                        matrix[i][j] = Math.min(matrix[i-1][j-1] + 1, Math.min(matrix[i][j-1] + 1, matrix[i-1][j] + 1));
+                    }
+                }
+            }
+            return matrix[b.length][a.length];
         }
 
         // Вкладки
         function switchTab(tab) {
             document.querySelectorAll('.screen').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.tabs button').forEach(el => el.classList.remove('active'));
-            document.getElementById(`screen-${tab}`).classList.add('active');
-            if(tab !== 'test') document.getElementById(`tab-${tab}`).classList.add('active');
-
-            if(tab === 'learn') renderLearnScreen();
-            if(tab === 'dict') initDictScreen();
+            document.getElementById(`tab-${tab}`).classList.add('active');
+            
+            sessionMode = tab;
+            masteryBatch = []; // Сброс сессии при переключении
+            
+            if(tab === 'learn' || tab === 'repeat') {
+                document.getElementById('screen-learn').classList.add('active');
+                document.getElementById('setup-title').innerText = tab === 'learn' ? 'Сколько новых слов учим?' : 'Сколько слов повторяем?';
+                document.getElementById('setup-btn').innerText = tab === 'learn' ? 'Начать изучение' : 'Начать повторение';
+                renderLearnScreen();
+            }
+            if(tab === 'dict') {
+                document.getElementById('screen-dict').classList.add('active');
+                initDictScreen();
+            }
         }
 
-        // === МЕХАНИКА ТРЁХЭТАПНОГО ИЗУЧЕНИЯ ===
-        function generateMasteryBatch() {
-            const neededSize = parseInt(document.getElementById('words-count-input').value) || 20;
-            // Ищем слова, которых нет в выученных
-            let available = db.filter(w => !learnedList.includes(w.id));
-            if(available.length === 0) {
-                alert("Поздравляем! Вы полностью выучили всю базу слов!");
-                return;
+        // === ЛОГИКА СЕССИЙ (Изучение и Повторение) ===
+        function startSession() {
+            const neededSize = parseInt(document.getElementById('words-count-input').value) || 10;
+            let pool = [];
+
+            if (sessionMode === 'learn') {
+                pool = db.filter(w => !learnedList.includes(w.id));
+                if(pool.length === 0) return alert("Вы выучили все слова из базы!");
+            } else if (sessionMode === 'repeat') {
+                pool = db.filter(w => learnedList.includes(w.id));
+                if(pool.length === 0) return alert("Сначала выучите хотя бы пару слов, чтобы их повторять!");
             }
 
-            available.sort(() => 0.5 - Math.random());
-            let finalSize = Math.min(neededSize, available.length);
-
-            // Забиваем пачку: каждое слово стартует с шага 1 (step: 1)
-            masteryBatch = available.slice(0, finalSize).map(w => ({ id: w.id, step: 1 }));
+            pool.sort(() => 0.5 - Math.random());
+            let finalSize = Math.min(neededSize, pool.length);
+            
+            masteryBatch = pool.slice(0, finalSize).map(w => ({ id: w.id, step: 1 }));
             currentLearnIdx = 0;
-
             renderLearnScreen();
         }
 
@@ -355,52 +310,62 @@
         function showLearnCard() {
             const cardEl = document.getElementById('learn-card');
             cardEl.classList.remove('flipped');
-
-            document.getElementById('learn-remain').innerText = `Слов в текущей пачке: ${masteryBatch.length}`;
-
+            document.getElementById('learn-remain').innerText = `Слов в сессии: ${masteryBatch.length}`;
+            
             if(currentLearnIdx >= masteryBatch.length) currentLearnIdx = 0;
-
+            
             let currentMeta = masteryBatch[currentLearnIdx];
             let wordObj = db.find(w => w.id === currentMeta.id);
-
+            
             const badge = document.getElementById('learn-step-indicator');
             const mainBtn = document.getElementById('learn-main-btn');
             const writeBlock = document.getElementById('learn-write-block');
+            const exBlock = document.getElementById('l-back-ex');
 
-            // Настройка UI в зависимости от шага слова
+            if(wordObj.ex) {
+                exBlock.style.display = "block";
+                exBlock.innerText = wordObj.ex;
+            } else {
+                exBlock.style.display = "none";
+            }
+
             if(currentMeta.step === 1) {
-                badge.innerText = "Шаг 1/3: Карточка (Англ ➔ Рус)";
+                badge.innerText = "Шаг 1: Англ ➔ Рус";
                 badge.style.background = "#e0e7ff";
                 writeBlock.style.display = "none";
-                mainBtn.innerText = "Знаю слово";
-
+                mainBtn.innerText = "Знаю";
+                mainBtn.className = "btn btn-primary";
                 document.getElementById('l-front-text').innerText = wordObj.en;
                 document.getElementById('l-back-trans').innerText = wordObj.ru;
                 document.getElementById('l-back-ts').innerText = wordObj.ts;
-                document.getElementById('l-back-ex').innerHTML = `${wordObj.ex_en} <i>${wordObj.ex_ru}</i>`;
-            }
+            } 
             else if(currentMeta.step === 2) {
-                badge.innerText = "Шаг 2/3: Карточка (Рус ➔ Англ)";
+                badge.innerText = "Шаг 2: Рус ➔ Англ";
                 badge.style.background = "#fef3c7";
                 writeBlock.style.display = "none";
-                mainBtn.innerText = "Знаю перевод";
-
+                mainBtn.innerText = "Знаю";
+                mainBtn.className = "btn btn-primary";
                 document.getElementById('l-front-text').innerText = wordObj.ru;
                 document.getElementById('l-back-trans').innerText = wordObj.en;
                 document.getElementById('l-back-ts').innerText = wordObj.ts;
-                document.getElementById('l-back-ex').innerHTML = `${wordObj.ex_en} <i>${wordObj.ex_ru}</i>`;
-            }
+            } 
             else if(currentMeta.step === 3) {
-                badge.innerText = "Шаг 3/3: Диктант (Письмо)";
+                badge.innerText = "Шаг 3: Письмо";
                 badge.style.background = "#fbcfe8";
                 writeBlock.style.display = "block";
-                resetLearnWriteUI();
-
+                
+                const input = document.getElementById('learn-write-input');
+                input.value = "";
+                input.className = "input-text";
+                document.getElementById('learn-write-feed').innerText = "";
+                
+                mainBtn.innerText = "Проверить";
+                mainBtn.className = "btn btn-primary";
                 document.getElementById('l-front-text').innerText = wordObj.ru;
-                // На обратной стороне даем подсказку, если совсем забыл
                 document.getElementById('l-back-trans').innerText = wordObj.en;
                 document.getElementById('l-back-ts').innerText = wordObj.ts;
-                document.getElementById('l-back-ex').innerHTML = `${wordObj.ex_en} <i>${wordObj.ex_ru}</i>`;
+                
+                setTimeout(() => input.focus(), 100);
             }
         }
 
@@ -408,13 +373,11 @@
             let currentMeta = masteryBatch[currentLearnIdx];
             let wordObj = db.find(w => w.id === currentMeta.id);
 
-            // Если шаг 1 или 2 — просто перекидываем на следующий шаг
             if(currentMeta.step < 3) {
                 currentMeta.step++;
                 currentLearnIdx++;
                 showLearnCard();
-            }
-            // Если шаг 3 — проверяем правописание
+            } 
             else {
                 const input = document.getElementById('learn-write-input');
                 const feed = document.getElementById('learn-write-feed');
@@ -422,30 +385,39 @@
 
                 if(mainBtn.innerText === "Проверить") {
                     let userAns = input.value.trim().toLowerCase();
-                    if(userAns === wordObj.en.toLowerCase()) {
+                    let correctAns = wordObj.en.trim().toLowerCase();
+                    let mistakes = getEditDistance(userAns, correctAns);
+
+                    if(mistakes === 0) {
                         input.className = "input-text correct";
-                        feed.innerHTML = "<span style='color:var(--success)'>Супер! Все 3 этапа пройдены. Слово выучено! 🎉</span>";
-                        mainBtn.innerText = "Удалить из пачки";
+                        feed.innerHTML = "<span style='color:var(--success)'>Идеально! 🎉</span>";
+                        mainBtn.innerText = "Далее";
+                        mainBtn.className = "btn btn-success";
+                    } else if (mistakes <= 2 && userAns.length > 2) {
+                        input.className = "input-text warning";
+                        feed.innerHTML = `<span style='color:var(--warning)'>Почти! Обрати внимание на ошибки, но мы засчитаем.<br>Правильно: <b>${wordObj.en}</b></span>`;
+                        mainBtn.innerText = "Далее";
+                        mainBtn.className = "btn btn-warning";
                     } else {
                         input.className = "input-text error";
-                        feed.innerHTML = `<span style='color:var(--danger)'>Ошибка. Правильно: <b>${wordObj.en}</b><br>Слово отправлено на 1-й шаг.</span>`;
+                        feed.innerHTML = `<span style='color:var(--danger)'>Ошибка. Правильно: <b>${wordObj.en}</b><br>Слово уходит на 1-й шаг.</span>`;
                         mainBtn.innerText = "Понятно";
+                        mainBtn.className = "btn btn-danger";
                     }
-                } else if(mainBtn.innerText === "Удалить из пачки") {
-                    // Переносим слово в глобально выученные
-                    if(!learnedList.includes(currentMeta.id)) {
+                } else if(mainBtn.innerText === "Далее") {
+                    if (sessionMode === 'learn' && !learnedList.includes(currentMeta.id)) {
                         learnedList.push(currentMeta.id);
                         saveData();
                     }
                     masteryBatch.splice(currentLearnIdx, 1);
                     if(masteryBatch.length === 0) {
-                        alert("Отличная работа! Вся дневная пачка отработана на 100%!");
+                        alert(sessionMode === 'learn' ? "Отлично! Вся новая пачка выучена!" : "Супер! Повторение завершено!");
                         renderLearnScreen();
                     } else {
                         showLearnCard();
                     }
-                } else { // Кнопка "Понятно" при ошибке
-                    currentMeta.step = 1; // Сбрасываем на первый этап
+                } else { // Кнопка "Понятно" (ошибка)
+                    currentMeta.step = 1;
                     currentLearnIdx++;
                     showLearnCard();
                 }
@@ -457,22 +429,14 @@
             showLearnCard();
         }
 
-        function resetLearnWriteUI() {
-            const input = document.getElementById('learn-write-input');
-            input.value = "";
-            input.className = "input-text";
-            document.getElementById('learn-write-feed').innerText = "";
-            document.getElementById('learn-main-btn').innerText = "Проверить";
-        }
-
-        // === МЕХАНИКА СЛОВАРЯ И УДАЛЕНИЯ ===
+        // === СЛОВАРЬ ===
         function initDictScreen() {
             document.getElementById('dict-count').innerText = learnedList.length;
             const box = document.getElementById('dict-box');
             box.innerHTML = '';
 
             if(learnedList.length === 0) {
-                box.innerHTML = '<div style="padding:20px; text-align:center; color:gray;">Выученных слов пока нет.</div>';
+                box.innerHTML = '<div style="padding:20px; text-align:center; color:gray;">Слов пока нет.</div>';
                 return;
             }
 
@@ -483,7 +447,6 @@
                     row.className = 'dict-row';
                     row.innerHTML = `
                         <div class="dict-info">
-                            <input type="checkbox" value="${w.id}" class="dict-test-cb">
                             <span><b>${w.en}</b> — ${w.ru}</span>
                         </div>
                         <button class="delete-btn" onclick="deleteWord(${w.id})">Удалить</button>
@@ -494,120 +457,13 @@
         }
 
         function deleteWord(id) {
-            if(confirm("Вернуть это слово обратно в пул неизученных?")) {
+            if(confirm("Удалить слово из выученных?")) {
                 learnedList = learnedList.filter(item => item !== id);
                 saveData();
-                initDictScreen();
             }
         }
 
-        function toggleSelectAllDict() {
-            const checkboxes = document.querySelectorAll('.dict-test-cb');
-            let allChecked = Array.from(checkboxes).every(cb => cb.checked);
-            checkboxes.forEach(cb => cb.checked = !allChecked);
-        }
-
-        // === МЕХАНИКА НАСТРАИВАЕМЫХ ТЕСТОВ ===
-        function startCustomTest() {
-            const checkedBoxes = document.querySelectorAll('.dict-test-cb:checked');
-            customTestPool = Array.from(checkedBoxes).map(cb => parseInt(cb.value));
-
-            if(customTestPool.length === 0) {
-                alert("Пожалуйста, отметьте галочками слова из списка выше!");
-                return;
-            }
-
-            customTestType = document.getElementById('test-type-select').value;
-            customTestPool.sort(() => 0.5 - Math.random()); // Перемешиваем тест
-            customTestIdx = 0;
-            isTestCheckingStage = true;
-
-            switchTab('test');
-            renderTestQuestion();
-        }
-
-        function renderTestQuestion() {
-            const cardMode = document.getElementById('test-card');
-            const writeMode = document.getElementById('test-write-block');
-            const actionBtn = document.getElementById('test-action-btn');
-
-            if(customTestIdx >= customTestPool.length) {
-                document.getElementById('test-progress').innerText = "Тестирование окончено!";
-                document.getElementById('test-question').innerText = "Прекрасный результат! 🎉";
-                cardMode.style.display = "none";
-                writeMode.style.display = "none";
-                actionBtn.style.display = "none";
-                return;
-            }
-
-            actionBtn.style.display = "block";
-            document.getElementById('test-progress').innerText = `Слово ${customTestIdx + 1} из ${customTestPool.length}`;
-
-            let w = db.find(item => item.id === customTestPool[customTestIdx]);
-
-            if(customTestType === 'en-ru-card') {
-                cardMode.style.display = "block";
-                writeMode.style.display = "none";
-                cardMode.classList.remove('flipped');
-                document.getElementById('t-front').innerText = w.en;
-                document.getElementById('t-back').innerText = w.ru;
-                actionBtn.innerText = "Следующее слово";
-            }
-            else if(customTestType === 'ru-en-card') {
-                cardMode.style.display = "block";
-                writeMode.style.display = "none";
-                cardMode.classList.remove('flipped');
-                document.getElementById('t-front').innerText = w.ru;
-                document.getElementById('t-back').innerText = w.en;
-                actionBtn.innerText = "Следующее слово";
-            }
-            else if(customTestType === 'write-test') {
-                cardMode.style.display = "none";
-                writeMode.style.display = "block";
-                document.getElementById('test-question').innerText = w.ru; // Показываем русское
-
-                const input = document.getElementById('test-input-field');
-                input.value = "";
-                input.className = "input-text";
-                document.getElementById('test-feedback-msg').innerText = "";
-                actionBtn.innerText = "Проверить";
-                isTestCheckingStage = true;
-                input.focus();
-            }
-        }
-
-        function handleTestNext() {
-            if(customTestType.includes('card')) {
-                customTestIdx++;
-                renderTestQuestion();
-            } else {
-                // Логика проверки письменного теста
-                let w = db.find(item => item.id === customTestPool[customTestIdx]);
-                const input = document.getElementById('test-input-field');
-                const msg = document.getElementById('test-feedback-msg');
-                const btn = document.getElementById('test-action-btn');
-
-                if(isTestCheckingStage) {
-                    let answer = input.value.trim().toLowerCase();
-                    if(answer === w.en.toLowerCase()) {
-                        input.className = "input-text correct";
-                        msg.innerHTML = "<span style='color:var(--success)'>Правильно! 🔥</span>";
-                    } else {
-                        input.className = "input-text error";
-                        msg.innerHTML = `<span style='color:var(--danger)'>Ошибка. Верно: <b>${w.en}</b></span>`;
-                    }
-                    btn.innerText = "Дальше ➔";
-                    isTestCheckingStage = false;
-                } else {
-                    customTestIdx++;
-                    renderTestQuestion();
-                }
-            }
-        }
-
-        // Ловим Enter в полях ввода
         document.getElementById('learn-write-input').addEventListener('keypress', e => { if(e.key === 'Enter') handleLearnAction(); });
-        document.getElementById('test-input-field').addEventListener('keypress', e => { if(e.key === 'Enter') handleTestNext(); });
 
         window.onload = () => switchTab('learn');
     </script>
